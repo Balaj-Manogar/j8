@@ -1,5 +1,7 @@
 package java8;
 
+import static util.Utils.waiting;
+
 /**
  * Perils of clone
  * 1. Clone supports only shallow copy, not deep copy
@@ -26,17 +28,22 @@ public class ClonePerilDemo
 
         // Now Jack and John both share Jil, Oh they are sharing that's not good, it's shallow copy
         System.out.println(jack);// Jack is married Jil, and she is Girl. hashcode: ######
-        System.out.println(john);// John is married Jil, and she is Girl. hashcode: ######
 
+        System.out.println("Jil doesn't like Jack , will marry John");
+        waiting();
+
+        System.out.println(john);// John is married Jil, and she is Girl. hashcode: ######
+        waiting();
         // Jil finds her name wih jack, so she changes her name to Jil John
         System.out.println("\n####\t Jil finds her name wih jack, so she changes her name to Jil John......");
         jil.setName("Jil John");
         System.out.println(jack);
         System.out.println(john);
+        waiting();
         System.out.println("####\t Clone Peril #1: Clone supports only shallow copy, not deep copy \nShe cannot able to " +
                 "change the reference from Jack");
 
-        System.out.println("");
+        waiting();
         // ------------------------------------------------
         // Alex wants to marry an Indian girl Mia, and we are checking polymorphism in java
         Girl mia = new IndianGirl("Mia");
@@ -56,6 +63,7 @@ public class ClonePerilDemo
         System.out.println(alex);// Alex is married Mia, and she is IndianGirl. hashcode: #####
         System.out.println(dhruv);// Dhruv is married Mia, and she is IndianGirl. hashcode: ######
 
+        waiting();
         System.out.println("\n####\t Clone Peril #2: Clone will not call constructor while cloning an object \n Check the " +
                 "boy id it is not changed while cloning");
     }

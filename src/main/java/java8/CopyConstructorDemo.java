@@ -1,5 +1,7 @@
 package java8;
 
+import static util.Utils.waiting;
+
 /**
  * Copy Constructor Peril:
  * 1. Copy Constructor Pattern doesn't support Runtime Polymorphism( new doesn't Support RT polymorphism).
@@ -26,26 +28,27 @@ public class CopyConstructorDemo
 
         System.out.println(jack);// Jack is married Jil, and she is Girl. hashcode: ######
         System.out.println(john);// John is married Jil, and she is Girl. hashcode: ######
-
+        waiting();
         // Jil finds her name wih jack, so she changes her name to Jil John
         System.out.println("\n####\t Jil finds her name wih jack, so she changes her name to Jil John......");
         jil.setName("Jil John");
         System.out.println(jack);
         System.out.println(john);
-
+        waiting();
         System.out.println("\n####\t And Jack wants to marry Alia, changes her girl name to Alia......");
         jack.getMarriedGirl().setName("Alia");
         System.out.println(jack);
         System.out.println(john);
         System.out.println("#### Now both were happy!!!!!");
 
-        System.out.println();
+        waiting();
         System.out.println("### Alex Marries Indian girl Mia");
         Girl mia = new IndianGirl("Mia");
         Boy alex = new Boy("Alex");
         alex.married(mia);
         System.out.println(alex);
 
+        waiting();
         System.out.println("###\t Alex friend Jose  wants to marry Mia's friend Lia, bcos he likes India");
         Boy jose = new Boy(alex);
         jose.setName("Jose");
